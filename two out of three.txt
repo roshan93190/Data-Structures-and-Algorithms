@@ -1,0 +1,49 @@
+
+Approach-1:
+
+class Solution {
+    public List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {
+        ArrayList<Integer> a=new ArrayList<>();
+        LinkedHashSet<Integer> hs1=new LinkedHashSet<>();
+        for(int i=0;i<nums1.length;i++){
+            hs1.add(nums1[i]);
+        }
+       
+         HashSet<Integer> hs3=new HashSet<>();
+        for(int i=0;i<nums3.length;i++){
+            hs3.add(nums3[i]);
+        }
+       
+         HashSet<Integer> hs2=new HashSet<>();
+        for(int i=0;i<nums2.length;i++){
+            hs2.add(nums2[i]);
+        }
+       for(int i : hs1)
+           a.add(i);
+        
+         for(int i : hs2)
+           a.add(i);
+        
+         for(int i : hs3)
+           a.add(i);
+       
+        Collections.sort(a);
+        ArrayList<Integer> arr=new ArrayList<>();
+        for(int i=0;i<a.size()-1;i++){
+            if(a.get(i) == a.get(i+1))
+                arr.add(a.get(i));
+        }
+           HashSet<Integer> hs4=new HashSet<>();
+        for(int i=0;i<arr.size();i++){
+            hs4.add(arr.get(i));
+        }
+        System.out.println(hs4);
+        ArrayList<Integer> a1=new ArrayList<>();
+        for(int i : hs4)
+            a1.add(i);
+        return a1;
+    }
+}
+
+
+
