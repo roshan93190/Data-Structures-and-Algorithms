@@ -1,3 +1,22 @@
+
+approach 1 :- Brute force
+class Solution {
+    public int numJewelsInStones(String jewels, String stones) {
+	int count=0;
+	for(int i = 0; i < jewels.length(); i++){
+	   for(int j = 0; j < stones.length();j++){
+		if(jewels.charAt(i).equals(stones.charAt(j)){
+		count++;
+		  }
+	      }
+	}   
+  
+        return count;
+    }
+}
+
+
+approach2:-
 Optimized in O(N) time complexity : -
 
 class Solution {
@@ -15,5 +34,8 @@ class Solution {
         return count;
     }
 }
+
+
+
 
 
