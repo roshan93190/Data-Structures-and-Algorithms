@@ -2,21 +2,35 @@
 Problem :- two sum
 
 Brute force :- 
-
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int[] arr=new int[2];
-        for(int i=0;i<nums.length;i++){
-            // int sum=0;
-            for(int j=i+1; j<nums.length;j++){
-                // System.out.println(sum);
-                if(target==nums[i]+nums[j]){
-                   arr[0]=i;
-                   arr[1]=j;
+        int l=0;
+        int r=nums.length;
+        while(l<r){
+            if(nums[l]+nums[r] == target){
+                return 
             }
-            }
-            }
-     return arr;   
+        }
+     
+        
     }
        
     }
+
+
+optimized :- 
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> visitedNums = new HashMap<>();
+        for(int i = 0; i<nums.length; i++){
+            int difference = target - nums[i];   //difference = given target - number given at ith index  
+            if(visitedNums.containsKey(difference)) // check if found difference is present in the MAP list
+			{   
+                return new int[] { i, visitedNums.get(difference) }; //if difference in map matches with the ith index element in array
+            }
+            visitedNums.put(nums[i],i); //addition of previous array element in map to match with future element if forms a pair
+        }
+        return new int[] {0, 0}; //if no matches are found
+    }
+}
