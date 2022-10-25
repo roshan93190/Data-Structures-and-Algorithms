@@ -1,0 +1,38 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main{
+    
+    public static void main(String[] args ){
+        
+        Scanner sc=new Scanner(System.in);
+        int tc=sc.nextInt();
+        for (int x=0;x<tc;x++){
+            int N=sc.nextInt();
+            sc.nextLine();
+            String str=sc.nextLine();
+            MyCode(N,str);
+            System.out.println();
+        }
+        
+    }
+    
+    public static void MyCode(int N,String str){
+        Map<Character,Integer> map=new HashMap<>();
+        for (int x=0;x<N;x++){
+            map.put(str.charAt(x),map.getOrDefault(str.charAt(x),0)+1);
+            if(x<N-1&&(str.charAt(x)!=str.charAt(x+1))){
+                System.out.print(str.charAt(x));
+                System.out.print(map.get(str.charAt(x)));
+                map.put(str.charAt(x),0);
+            }
+            else if(x==N-1){
+                System.out.print(str.charAt(x));
+                System.out.print(map.get(str.charAt(x)));
+            }
+        }
+        
+    }
+    
+}
