@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+import java.util.stream.*;
+
+public class Main{
+    
+    public static int findSplit(int[] arr){
+      int sum = IntStream.of(arr).sum();
+            int sum1=0;
+            int count=0;
+     for(int i = 0 ;i<arr.length-1;i++){
+     sum1+=arr[i];
+     sum-=arr[i];
+     
+     if(sum1>=sum)
+     count++;
+     
+         }
+ return count;
+    }
+    public static void main(String[] args)throws Exception{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        int tc = Integer.parseInt(bf.readLine());
+        for(int i = 0; i < tc; i++){
+            int length = Integer.parseInt(bf.readLine());
+            String[] strArr = bf.readLine().trim().split(" ");
+            int[] arr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray();
+        
+            System.out.println(findSplit(arr));
+     
+        }
+    }
+}
