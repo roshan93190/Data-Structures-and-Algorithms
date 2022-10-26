@@ -1,37 +1,37 @@
+import java.io.*;
+import java.util.*;
 
-//
-
-
-
-
-
-
-
-
-
-
-
-
-//Remove duplicates optimized
-class Solution {
-    public int removeDuplicates(int[] nums) {
-       
-          int i=0;
-        int j=i+1;
-        while(i<nums.length && j<nums.length)
-        {
-            if(nums[i]==nums[j])
-            {
-                j++;
-            }
-            else
-            {
-                i++;
-                nums[i] = nums[j];
-            }
+public class Main{
+    
+    public static String done(int[] arr){
+         int count=1;
+         int j=1;
+         for(int i=1;i<arr.length;i++){
+             if(arr[i] != arr[i-1]){
+                 arr[j++]=arr[i];
+                    count++;
+             }
+         }
+         
+         System.out.println(count);
+         StringBuffer s=new StringBuffer("");
+         for(int i =0;i<count;i++){
+            //  System.out.println(arr[i]+" ");
+            s.append(arr[i]+" ");
+         }
+            //  System.out.println(s);
+    
+        return s.toString();
+    }
+    
+    public static void  main(String[] args) throws Exception{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        int tc = Integer.parseInt(bf.readLine());
+        for(int i = 0; i < tc; i++){
+            int length = Integer.parseInt(bf.readLine());
+            String[] strArr = bf.readLine().trim().split(" ");
+            int[] arr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray();
+            System.out.println(done(arr));
         }
-        return ++i;
-        
-        
     }
 }
