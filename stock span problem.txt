@@ -1,0 +1,55 @@
+//Stock span problem
+
+
+import java.util.*;
+import java.io.*;
+
+public class Main{
+    
+    public static void stockSpan(int[] price, int n,  int[] S){
+        Deque<Integer> st = new ArrayDeque<Integer>();
+        //Stack<Integer> st = new Stack<>();
+        st.push(0);
+  
+        // Span value of first element is always 1
+        S[0] = 1;
+  
+        // Calculate span values for rest of the elements
+        for (int i = 1; i < n; i++) {
+  
+            // Pop elements from stack while stack is not
+            // empty and top of stack is smaller than
+            // price[i]
+            while (!st.isEmpty() && price[st.peek()] <= price[i])
+                st.pop();
+  
+            // If stack becomes empty, then price[i] is
+            // greater than all elements on left of it, i.e.,
+            // price[0], price[1], ..price[i-1]. Else price[i]
+            // is greater than elements after top of stack
+            S[i] = (st.isEmpty()) ? (i + 1) : (i - st.peek());
+  
+            // Push this element to stack
+            st.push(i);
+        }
+        StringBuilder sb = new StringBuilder("");
+       for(int i = 0; i < S.length; i++ ){
+           sb.append(S[i]+" ");
+       }
+       System.out.println(sb);
+    }
+    public static void main(String[] args) throws Exception{
+        
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        int tc = Integer.parseInt(bf.readLine());
+        for(int i = 0; i < tc; i++){
+        int length = Integer.parseInt(bf.readLine());
+        String[] strArr = bf.readLine().trim().split(" ");
+        int[] arr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray();
+        //   System.out.println(Arrays.toString(arr));
+        int[] newArr = new int[arr.length];
+        stockSpan(arr,length,newArr);
+        }
+        
+    }
+}
