@@ -1,0 +1,9 @@
+Iterating over linkedlIst :-
+
+ public void traverse(Node head){
+        Node curr = head;
+        while(curr != null){
+            System.out.println(curr);
+            curr = curr.next;
+        }
+    }
